@@ -6,13 +6,13 @@
     <title>Test-php</title>
 </head>
 <body>
-    <form action="post">
-        <input type="text" name="text" placeholder="inserisci qui il testo...">
-        <button type="submit">Inserisci</button>
+    <form action="index.php" method="post">
+        <input type="text" name="testo" placeholder="inserisci qui il testo...">
+        <input type="submit">
     </form>
+    <?php
+        echo $_POST['testo'];
+    ?>
 </body>
 </html>
 
-<?php
-
-?>

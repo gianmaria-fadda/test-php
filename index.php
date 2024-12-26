@@ -8,9 +8,11 @@
 </head>
 <body>
     <div id="app">
-        <h1>
-            {{ textH1 }}
-        </h1>
+        <div :class="currentColor">
+            <h1>
+                {{ textH1 }}
+            </h1>
+        </div>
     </div>
 
     <form action="index.php" method="post">
@@ -23,22 +25,51 @@
 </body>
 </html>
 
+<style>
+    div {
+    display: flex;
+    justify-content: center;
+    color: white;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    padding: 20px;
+    }
+
+    .green-color {
+        background-color: green;
+    }
+
+    .red-color {
+        background-color: red;
+    }
+
+    .blue-color {
+        background-color: blue;
+    }
+
+</style>
+
 <script>
     const app = Vue.createApp({
         data() {
             return {
-                textH1: "Questa è una pagina di test"
-            };
-        }
-    });
+                textH1: "Questa è una pagina di test",
+                currentColorIndex: 0,
+                    colors: ['green-color', 'red-color', 'blue-color']
+                };
+            },
+            computed: {
+                currentColor() {
+                    return this.colors[this.currentColorIndex];
+                }
+            },
+            mounted() {
+                setInterval(() => {
+                    // Cambia l'indice in modo ciclico
+                    this.currentColorIndex = (this.currentColorIndex + 1) % this.colors.length;
+                }, 1000);
+            }
+        });
 
     app.mount('#app');
 </script>
-
-<style>
-    div {
-
-        display: flex;
-        justify-content: center;
-    };
-</style>

@@ -65,7 +65,6 @@
             },
             mounted() {
                 setInterval(() => {
-                    // Cambia l'indice in modo ciclico
                     this.currentColorIndex = (this.currentColorIndex + 1) % this.colors.length;
                 }, 1000);
             }
